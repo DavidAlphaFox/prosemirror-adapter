@@ -25,7 +25,7 @@ export function useSolidPluginViewCreator(
           },
         },
       })
-
+      //将视图渲染到页面上
       renderSolidRenderer(pluginView)
 
       return pluginView

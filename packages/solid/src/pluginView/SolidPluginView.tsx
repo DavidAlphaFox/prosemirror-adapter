@@ -37,7 +37,7 @@ export class SolidPluginView
     this.setContext(() => ({
       view: this.view,
       prevState: this.prevState,
-    }))//
+    })) //设置当前Plugin的上下文
   }
 
   // 组件的渲染函数
@@ -45,6 +45,7 @@ export class SolidPluginView
     const UserComponent = this.component // 得到真正的Component
     // 此处会用PluginViewContext为组件提供上下文
     // 用来获取ProseMirror编辑器视图和前一次的状态
+    //ref回调函数（在连接到 DOM 之前调用），会将得到HTMLEment的display进行变更
     return (
       <Portal mount={this.root} ref={el => hidePortalDiv(el)}>
         <pluginViewContext.Provider value={this.context}>
