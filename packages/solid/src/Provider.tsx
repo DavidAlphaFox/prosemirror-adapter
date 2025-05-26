@@ -27,7 +27,7 @@ export const ProsemirrorAdapterProvider: Component<ParentProps> = (props) => {
     renderSolidRenderer,
     removeSolidRenderer,
   )
-
+  // 创建PluginView的工厂
   const createSolidPluginView = useSolidPluginViewCreator(
     renderSolidRenderer,
     removeSolidRenderer,

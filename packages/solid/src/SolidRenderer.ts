@@ -20,6 +20,7 @@ export interface SolidRendererResult {
 export function useSolidRenderer(): SolidRendererResult {
   const [portals, setPortals] = createSignal<Record<string, JSX.Element>>({})
   const owner = getOwner()
+  // 渲染solid组件的函数
   const renderSolidRenderer = (
     nodeView: SolidRenderer<unknown>,
     update = true,
@@ -32,7 +33,7 @@ export function useSolidRenderer(): SolidRendererResult {
       [nodeView.key]: runWithOwner(owner, () => nodeView.render()),
     }))
   }
-
+  // 删除solid组件的函数
   const removeSolidRenderer = (nodeView: SolidRenderer<unknown>) => {
     setPortals((prev) => {
       const next = { ...prev }

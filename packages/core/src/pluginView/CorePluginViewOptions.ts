@@ -8,8 +8,8 @@ export interface CorePluginViewSpec<Component> {
 }
 
 export interface CorePluginViewUserOptions<Component> {
-  component: Component
-  root?: (viewDOM: HTMLElement) => HTMLElement
+  component: Component // 视图组件
+  root?: (viewDOM: HTMLElement) => HTMLElement // 视图的挂载点
   update?: (view: EditorView, prevState: EditorState) => void
   destroy?: () => void
 }

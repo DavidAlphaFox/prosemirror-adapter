@@ -17,9 +17,9 @@ import { pluginViewContext } from './pluginViewContext'
 export class SolidPluginView
   extends CorePluginView<SolidPluginViewComponent>
   implements SolidRenderer<PluginViewContext> {
-  key: string = nanoid()
+  key: string = nanoid() // Key是一个随机的nanoid
 
-  context: PluginViewContext
+  context: PluginViewContext // 上下文
 
   private setContext: Setter<PluginViewContextProps>
 
@@ -37,12 +37,14 @@ export class SolidPluginView
     this.setContext(() => ({
       view: this.view,
       prevState: this.prevState,
-    }))
+    }))//
   }
 
+  // 组件的渲染函数
   render = (): JSX.Element => {
-    const UserComponent = this.component
-
+    const UserComponent = this.component // 得到真正的Component
+    // 此处会用PluginViewContext为组件提供上下文
+    // 用来获取ProseMirror编辑器视图和前一次的状态
     return (
       <Portal mount={this.root} ref={el => hidePortalDiv(el)}>
         <pluginViewContext.Provider value={this.context}>

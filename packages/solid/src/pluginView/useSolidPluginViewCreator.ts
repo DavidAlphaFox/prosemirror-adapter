@@ -6,7 +6,7 @@ import { SolidPluginView } from './SolidPluginView'
 export function useSolidPluginViewCreator(
   renderSolidRenderer: SolidRendererResult['renderSolidRenderer'],
   removeSolidRenderer: SolidRendererResult['removeSolidRenderer'],
-) {
+) { // pluginViewFactory真正实现函数
   const createSolidPluginView = (
     options: SolidPluginViewUserOptions,
   ): PluginViewSpec => {
@@ -16,12 +16,12 @@ export function useSolidPluginViewCreator(
         options: {
           ...options,
           update: (view, prevState) => {
-            options.update?.(view, prevState)
-            pluginView.updateContext()
+            options.update?.(view, prevState)// 如果options中有更新函数，则执行
+            pluginView.updateContext()// 更新PluginView的Context
           },
           destroy: () => {
             options.destroy?.()
-            removeSolidRenderer(pluginView)
+            removeSolidRenderer(pluginView) // 删除视图
           },
         },
       })
